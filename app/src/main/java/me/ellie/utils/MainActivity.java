@@ -1,12 +1,12 @@
 package me.ellie.utils;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import me.ellie.utils.library.ClipboardUtil;
+import me.ellie.utils.library.ToastUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
@@ -22,10 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.main_copy_btn:
                 ClipboardUtil.copyText(this, "copy me");
-                Toast.makeText(this, "copied", Toast.LENGTH_SHORT).show();
+                ToastUtil.showShortToast(this, "copied");
+                ToastUtil.showShortToast(this, R.string.app_name);
                 break;
             case R.id.main_get_btn:
-                Toast.makeText(this, ClipboardUtil.getText(this), Toast.LENGTH_SHORT).show();
+                ToastUtil.showLongToast(this, ClipboardUtil.getText(this));
                 break;
         }
     }
