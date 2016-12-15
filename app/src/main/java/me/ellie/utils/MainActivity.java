@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,12 +13,14 @@ import java.util.List;
 
 import me.ellie.utils.library.ClipboardUtil;
 import me.ellie.utils.library.EmptyUtil;
+import me.ellie.utils.library.KeyboardUtil;
 import me.ellie.utils.library.TimeUtil;
 import me.ellie.utils.library.ToastUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvShowTime, tvEmpty;
+    private EditText etContent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvShowTime = (TextView) findViewById(R.id.main_show_time_tv);
         findViewById(R.id.main_empty_btn).setOnClickListener(this);
         tvEmpty = (TextView) findViewById(R.id.main_show_empty_tv);
+        etContent = (EditText) findViewById(R.id.main_content_et);
+        findViewById(R.id.main_show_keyboard_btn).setOnClickListener(this);
+        findViewById(R.id.main_hide_keyboard_btn).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvEmpty.setText("strList is empty " + EmptyUtil.isEmpty(strList)
                         + "\nstrSA is empty " + EmptyUtil.isEmpty(strSA)
                         + "\n strList is list empty " + EmptyUtil.listIsEmpty(strList));
+                break;
+            case R.id.main_show_keyboard_btn:
+                KeyboardUtil.showKeyboard(this, etContent);
+                break;
+            case R.id.main_hide_keyboard_btn:
+                KeyboardUtil.hideKeyboard(this);
                 break;
         }
     }
