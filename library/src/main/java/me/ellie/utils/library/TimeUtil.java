@@ -1,5 +1,6 @@
 package me.ellie.utils.library;
 
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 
 import java.text.ParseException;
@@ -45,7 +46,10 @@ public class TimeUtil {
      * @return 时间字符串
      */
     public static String millis2Str(long timeMillis, String pattern) {
-        return new SimpleDateFormat(pattern, Locale.getDefault()).format(new Date(timeMillis));
+        if (timeMillis > 0 && !TextUtils.isEmpty(pattern)) {
+            return new SimpleDateFormat(pattern, Locale.getDefault()).format(new Date(timeMillis));
+        }
+        return null;
     }
 
     /**
@@ -67,7 +71,9 @@ public class TimeUtil {
      */
     public static long string2Millis(String date, String pattern) {
         try {
-            return new SimpleDateFormat(pattern, Locale.getDefault()).parse(date).getTime();
+            if (!TextUtils.isEmpty(date) && !TextUtils.isEmpty(pattern)) {
+                return new SimpleDateFormat(pattern, Locale.getDefault()).parse(date).getTime();
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -91,6 +97,9 @@ public class TimeUtil {
      * @return 是否是今年
      */
     public static boolean isThisYear(long time) {
+        if (time <= 0) {
+            return false;
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time);
         int year = calendar.get(Calendar.YEAR);
@@ -106,6 +115,9 @@ public class TimeUtil {
      * @return 是否是同一天
      */
     public static boolean isSameDay(long time1, long time2) {
+        if (time1 <= 0 || time2 <= 0) {
+            return false;
+        }
         Calendar calendar1 = Calendar.getInstance();
         Calendar calendar2 = Calendar.getInstance();
         calendar1.setTimeInMillis(time1);
