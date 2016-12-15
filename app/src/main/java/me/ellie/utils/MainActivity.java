@@ -54,14 +54,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_get_time_btn:
                 long time = System.currentTimeMillis();
                 tvShowTime.setText("current time:" + TimeUtil.millis2Str(time) + "\n"
-                + "current date: " + TimeUtil.millis2Str(time, "yyyy-MM-dd") + "\n"
-                + "string to millis: " + TimeUtil.string2Millis("2016-12-12", "yyyy-MM-dd") + "\n"
-                + "string to millis: " + TimeUtil.string2Millis("2016-12-12 15:15:15") + "\n"
-                + "show date: " + TimeUtil.getShowDate(time) + "\n"
-                + "is same day: " + TimeUtil.isSameDay(time, time + 3000) + "\n"
-                + "get days interval: " + TimeUtil.getDaysInterval("20161210", "20161112", "yyyyMMdd") + "\n"
-                + "get days interval: " + TimeUtil.getDaysInterval("2016-12-10 02:10:10", "2016-11-12 18:10:20") + "\n"
-                );
+                        + "current date: " + TimeUtil.millis2Str(time, "yyyy-MM-dd") + "\n"
+                        + "string to millis: " + TimeUtil.string2Millis("2016-12-12", "yyyy-MM-dd") + "\n"
+                        + "string to millis: " + TimeUtil.string2Millis("2016-12-12 15:15:15") + "\n"
+                        + "show date: " + TimeUtil.getShowDate(time) + "\n"
+                        + "is same day: " + TimeUtil.isSameDay(time, time + 3000) + "\n"
+                        + "get days interval: " + TimeUtil.getDaysInterval("20161210", "20161112", "yyyyMMdd") + "\n"
+                        + "get days interval: " + TimeUtil.getDaysInterval("2016-12-10 02:10:10", "2016-11-12 18:10:20") + "\n");
                 break;
             case R.id.main_empty_btn:
                 List<String> strList = new ArrayList<>();
