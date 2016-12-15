@@ -14,6 +14,7 @@ import java.util.List;
 import me.ellie.utils.library.ClipboardUtil;
 import me.ellie.utils.library.EmptyUtil;
 import me.ellie.utils.library.KeyboardUtil;
+import me.ellie.utils.library.LogUtil;
 import me.ellie.utils.library.TimeUtil;
 import me.ellie.utils.library.ToastUtil;
 
@@ -44,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ClipboardUtil.copyText(this, "copy me");
                 ToastUtil.showShortToast(this, "copied");
                 ToastUtil.showShortToast(this, R.string.app_name);
+                LogUtil.i(MainActivity.class.getSimpleName(), "copied");
                 break;
             case R.id.main_get_btn:
                 ToastUtil.showLongToast(this, ClipboardUtil.getText(this));
+                LogUtil.d(MainActivity.class.getSimpleName(), ClipboardUtil.getText(this).toString());
                 break;
             case R.id.main_get_time_btn:
                 long time = System.currentTimeMillis();
