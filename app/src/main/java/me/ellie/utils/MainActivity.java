@@ -9,16 +9,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import me.ellie.utils.library.ClipboardUtil;
 import me.ellie.utils.library.EmptyUtil;
+import me.ellie.utils.library.EncodeUtil;
 import me.ellie.utils.library.KeyboardUtil;
 import me.ellie.utils.library.LogUtil;
 import me.ellie.utils.library.TimeUtil;
 import me.ellie.utils.library.ToastUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private TextView tvShowTime, tvEmpty;
     private EditText etContent;
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etContent = (EditText) findViewById(R.id.main_content_et);
         findViewById(R.id.main_show_keyboard_btn).setOnClickListener(this);
         findViewById(R.id.main_hide_keyboard_btn).setOnClickListener(this);
+        findViewById(R.id.main_url_encode_btn).setOnClickListener(this);
+        findViewById(R.id.main_base64_encode_btn).setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.main_hide_keyboard_btn:
                 KeyboardUtil.hideKeyboard(this);
+                break;
+            case R.id.main_url_encode_btn:
+                LogUtil.d(TAG, "url encode test:" + EncodeUtil.urlEncode("test") + "\n"
+                        + "url encode 工具类:" + EncodeUtil.urlEncode("工具类"));
+                break;
+            case R.id.main_base64_encode_btn:
+                LogUtil.d(TAG, "base64 encode test:" + EncodeUtil.base64Encode2String("test") + "\n"
+                        + "base64 encode 工具类:" + Arrays.toString(EncodeUtil.base64Encode("工具类".getBytes())));
                 break;
         }
     }

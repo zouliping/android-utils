@@ -52,7 +52,8 @@
     <EditText
         android:id="@+id/main_content_et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusable="false"/>
 
     <Button
         android:id="@+id/main_show_keyboard_btn"
@@ -65,6 +66,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="hide keyboard"/>
+
+    <Button
+        android:id="@+id/main_url_encode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="url encode"/>
+
+    <Button
+        android:id="@+id/main_base64_encode_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="base64 encode"/>
 
 </LinearLayout>
 
