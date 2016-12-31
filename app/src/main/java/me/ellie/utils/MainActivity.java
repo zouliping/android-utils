@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import me.ellie.utils.library.AppUtil;
 import me.ellie.utils.library.ClipboardUtil;
 import me.ellie.utils.library.EmptyUtil;
 import me.ellie.utils.library.EncodeUtil;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private TextView tvShowTime, tvEmpty;
+    private TextView tvShowTime, tvEmpty, tvAppInfo;
     private EditText etContent;
 
     @Override
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_hide_keyboard_btn).setOnClickListener(this);
         findViewById(R.id.main_url_encode_btn).setOnClickListener(this);
         findViewById(R.id.main_base64_encode_btn).setOnClickListener(this);
+        tvAppInfo = (TextView) findViewById(R.id.main_app_info_tv);
+        findViewById(R.id.main_app_info_btn).setOnClickListener(this);
     }
 
     @Override
@@ -88,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_base64_encode_btn:
                 LogUtil.d(TAG, "base64 encode test:" + EncodeUtil.base64Encode2String("test") + "\n"
                         + "base64 encode 工具类:" + Arrays.toString(EncodeUtil.base64Encode("工具类".getBytes())));
+                break;
+            case R.id.main_app_info_btn:
+                tvAppInfo.setText("app name:" + AppUtil.getAppName(this) + "\n"
+                        + "app version name:" + AppUtil.getAppVersionName(this) + "\n"
+                        + "app version code:" + AppUtil.getAppVersionCode(this));
                 break;
         }
     }
