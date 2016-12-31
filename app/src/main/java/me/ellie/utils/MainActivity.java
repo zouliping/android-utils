@@ -1,6 +1,9 @@
 package me.ellie.utils;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
@@ -18,6 +21,7 @@ import me.ellie.utils.library.EmptyUtil;
 import me.ellie.utils.library.EncodeUtil;
 import me.ellie.utils.library.KeyboardUtil;
 import me.ellie.utils.library.LogUtil;
+import me.ellie.utils.library.PermissionUtil;
 import me.ellie.utils.library.TimeUtil;
 import me.ellie.utils.library.ToastUtil;
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_base64_encode_btn).setOnClickListener(this);
         tvAppInfo = (TextView) findViewById(R.id.main_app_info_tv);
         findViewById(R.id.main_app_info_btn).setOnClickListener(this);
+        findViewById(R.id.main_permission_btn).setOnClickListener(this);
     }
 
     @Override
@@ -97,6 +102,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         + "app version name:" + AppUtil.getAppVersionName(this) + "\n"
                         + "app version code:" + AppUtil.getAppVersionCode(this));
                 break;
+            case R.id.main_permission_btn:
+                if (PermissionUtil.checkPermission(this, Manifest.permission.CAMERA)) {
+                    ToastUtil.showShortToast(this, "camera permission already granted");
+                } else {
+                    PermissionUtil.requestPermission(this, Manifest.permission.CAMERA, 10001);
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 10001 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            ToastUtil.showShortToast(this, "camera permission granted");
+        } else {
+            ToastUtil.showShortToast(this, "camera permission denied");
         }
     }
 }
