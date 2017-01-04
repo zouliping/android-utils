@@ -17,6 +17,9 @@ import android.text.TextUtils;
  */
 public class PermissionUtil {
 
+    private PermissionUtil() {
+    }
+
     /**
      * 检查权限
      *

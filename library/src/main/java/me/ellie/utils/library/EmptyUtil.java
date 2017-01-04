@@ -16,6 +16,9 @@ import java.util.Map;
  */
 public class EmptyUtil {
 
+    private EmptyUtil() {
+    }
+
     /**
      * 是否为空
      * @param object 判断对象

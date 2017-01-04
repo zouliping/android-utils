@@ -13,6 +13,9 @@ public class ToastUtil {
 
     private static Handler sHandler = new Handler(Looper.getMainLooper());
 
+    private ToastUtil() {
+    }
+
     /**
      * 显示短 Toast
      *

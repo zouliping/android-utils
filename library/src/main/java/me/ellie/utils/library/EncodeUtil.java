@@ -11,6 +11,9 @@ import java.net.URLEncoder;
  */
 public class EncodeUtil {
 
+    private EncodeUtil() {
+    }
+
     /**
      * url 编码
      *

@@ -10,6 +10,9 @@ import android.text.TextUtils;
  */
 public class ClipboardUtil {
 
+    private ClipboardUtil() {
+    }
+
     /**
      * 复制文本到剪切板
      *

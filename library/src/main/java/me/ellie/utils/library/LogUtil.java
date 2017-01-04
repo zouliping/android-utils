@@ -17,6 +17,9 @@ public class LogUtil {
         return sLogMode;
     }
 
+    private LogUtil() {
+    }
+
     /**
      * 打印 VERBOSE 日志
      *

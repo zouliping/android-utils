@@ -10,6 +10,9 @@ import android.text.TextUtils;
  */
 public class AppUtil {
 
+    private AppUtil() {
+    }
+
     /**
      * 获取 App 名称
      * @param context 上下文

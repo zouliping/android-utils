@@ -16,6 +16,9 @@ import java.util.List;
  */
 public class DeviceUtil {
 
+    private DeviceUtil() {
+    }
+
     /**
      * 获取 Android Id
      *

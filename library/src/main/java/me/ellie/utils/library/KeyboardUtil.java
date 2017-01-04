@@ -11,6 +11,9 @@ import android.widget.EditText;
  */
 public class KeyboardUtil {
 
+    private KeyboardUtil() {
+    }
+
     /**
      * 显示键盘
      *

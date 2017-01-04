@@ -17,6 +17,9 @@ public class TimeUtil {
 
     private static final String DEFAULT_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
+    private TimeUtil() {
+    }
+
     /**
      * 时间字符串转换为 Date 类型
      *
