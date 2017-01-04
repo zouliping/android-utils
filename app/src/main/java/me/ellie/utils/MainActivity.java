@@ -17,6 +17,7 @@ import java.util.List;
 
 import me.ellie.utils.library.AppUtil;
 import me.ellie.utils.library.ClipboardUtil;
+import me.ellie.utils.library.DeviceUtil;
 import me.ellie.utils.library.EmptyUtil;
 import me.ellie.utils.library.EncodeUtil;
 import me.ellie.utils.library.KeyboardUtil;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private TextView tvShowTime, tvEmpty, tvAppInfo;
+    private TextView tvShowTime, tvEmpty, tvAppInfo, tvDeviceInfo;
     private EditText etContent;
 
     @Override
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvAppInfo = (TextView) findViewById(R.id.main_app_info_tv);
         findViewById(R.id.main_app_info_btn).setOnClickListener(this);
         findViewById(R.id.main_permission_btn).setOnClickListener(this);
+        findViewById(R.id.main_device_info_btn).setOnClickListener(this);
+        tvDeviceInfo = (TextView) findViewById(R.id.main_device_info_tv);
     }
 
     @Override
@@ -108,6 +111,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     PermissionUtil.requestPermission(this, Manifest.permission.CAMERA, 10001);
                 }
+                break;
+            case R.id.main_device_info_btn:
+                tvDeviceInfo.setText("model:" + DeviceUtil.getModel() + "\n"
+                        + "manufacturer:" + DeviceUtil.getManufacturer() + "\n"
+                        + "android id:" + DeviceUtil.getAndroidId(this) + "\n"
+                        + "sdk version:" + DeviceUtil.getAndroidSDKVersion() + "\n"
+                        + "mac address:" + DeviceUtil.getMacAddress(this) + "\n");
                 break;
         }
     }
